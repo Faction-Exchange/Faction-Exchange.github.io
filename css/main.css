@@ -1,0 +1,32 @@
+:root {
+  --color-primary: #0D1F26;
+  --color-secondary: #594B03;
+  --color-tertiary: #A69026;
+  --color-quaternary: #59554D;
+  --color-quinary: #F2F2F2;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-secondary);
+}
+
+header {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(0deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-quinary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/*# sourceMappingURL=main.css.map */
