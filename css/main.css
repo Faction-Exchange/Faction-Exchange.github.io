@@ -15,13 +15,13 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--color-secondary);
+  background-color: var(--color-primary);
 }
 
 header {
   width: 100%;
   height: 100vh;
-  background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(180deg, var(--color-secondary), var(--color-primary));
   color: var(--color-quinary);
   display: flex;
   flex-direction: column;
@@ -48,6 +48,7 @@ main hr {
   justify-content: center;
   align-items: center;
   text-align: center;
+  gap: 1em;
 }
 
 .button {
@@ -56,8 +57,6 @@ main hr {
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
-  margin: 10px;
-  font-size: 1.2rem;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
@@ -105,8 +104,16 @@ main hr {
   background-color: var(--color-tertiary);
 }
 
-input[type=search] {
-  width: 100%;
+.search__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1em;
+}
+
+input[type=search], input[type=button] {
   padding: 10px;
   border: 1px solid var(--color-quinary);
   background-color: var(--color-quinary);
@@ -114,37 +121,23 @@ input[type=search] {
   border-radius: 5px;
 }
 
-.faction-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+input[type=search] {
+  flex-grow: 1;
 }
-.faction-list .faction {
-  flex: 1 1 300px;
-  height: 300px;
+
+.search-result {
   background-color: var(--color-quaternary);
   color: var(--color-quinary);
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin: 10px;
-  font-size: 1.2rem;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  display: flex;
-  flex-direction: column;
+  padding: 1em;
+  border-radius: 1em;
+  margin: 1em 0;
 }
-.faction-list .faction h2 {
-  flex: 1;
-  border-bottom: 1px solid var(--color-quinary);
+.search-result .button {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-quinary);
 }
-.faction-list .faction p {
-  flex: 1;
-}
-.faction-list .faction:hover {
-  background-color: var(--color-tertiary);
+.search-result .button:hover {
+  background-color: var(--color-quaternary);
 }
 
 /*# sourceMappingURL=main.css.map */

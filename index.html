@@ -72,17 +72,23 @@
     <p>A collection of most MWT factions and their analytics.</p>
 
     <label for="search-bar"></label>
-    <input
-            type="search"
-            name="search"
-            placeholder="Search for a faction"
-            id="search-bar"
-    >
-    <input
-            type="button"
-            value="Search"
-            id="search-button"
-    >
+
+    <div class="search__row">
+
+
+        <input
+                id="search-bar"
+                name="fe-search"
+                placeholder="Search for a faction"
+                type="search"
+        >
+        <input
+                id="search-button"
+                type="button"
+                value="Search"
+        >
+
+    </div>
 
 
     <div class="faction-list" id="search-results"></div>

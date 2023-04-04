@@ -3,6 +3,62 @@ const
     DEV_MODE = true,
     PAGE = window.location.pathname;
 
+// 1. Global Functions
+function getAverageColour(image_src) {
+
+    const
+        canvas = document.createElement("canvas"),
+        context = canvas.getContext && canvas.getContext("2d");
+
+    let
+        data, width, height, i = -4,
+        length, rgb = {r:0,g:0,b:0},
+        count = 0;
+
+    if (!context) {
+        return false;
+    }
+
+    const
+        img = new Image();
+
+    img.src = image_src;
+
+    width = canvas.width = img.width;
+    height = canvas.height = img.height;
+
+    context.drawImage(img, 0, 0);
+
+    try {
+        data = context.getImageData(0, 0, width, height);
+    } catch(e) {
+        /* security error, img on diff domain */
+        console.error(e);
+        return false;
+    }
+
+    length = data.data.length;
+
+    while ( (i += width * 4) < length ) {
+        ++count;
+        rgb.r += data.data[i];
+        rgb.g += data.data[i+1];
+        rgb.b += data.data[i+2];
+    }
+
+    // ~~ used to floor values
+    rgb.r = ~~(rgb.r/count);
+    rgb.g = ~~(rgb.g/count);
+    rgb.b = ~~(rgb.b/count);
+
+    console.log(rgb);
+    return `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+    
+}
+
+
+
+// 2. Webhook
 if (!DEV_MODE) {
     fetch(WEBHOOK_URL, {
         method: "POST",
@@ -20,8 +76,8 @@ if (!DEV_MODE) {
 }
 
 
-/// 1. Searching factions
 
+// 3. Searching Factions
 const
     SEARCH_BAR = document.getElementById("search-bar"),
     SEARCH_BUTTON = document.getElementById("search-button"),
@@ -30,13 +86,70 @@ const
 let
     FACTION_LIST = [];
 
-// Get data/factions.json | async
+function addFaction(faction) {
+    const
+        FACTION = faction.item,
+        SEARCH_RESULT = document.createElement("div"),
+        SEARCH_RESULT_NAME = document.createElement("h3"),
+        SEARCH_RESULT_DESCRIPTION = document.createElement("p"),
+        SEARCH_RESULT_LEADER = document.createElement("p"),
+        SEARCH_RESULT_BUTTON = document.createElement("a"),
+        SEARCH_RESULT_LOGO = document.createElement("img");
+
+
+    console.log(FACTION)
+    
+    const
+        LOGO_NAME = `${FACTION.logo}`,
+        LOGO_PATH = LOGO_NAME;
+
+
+    SEARCH_RESULT.classList.add("search-result");
+
+    SEARCH_RESULT_LOGO.src = LOGO_PATH;
+    SEARCH_RESULT_LOGO.width = 100;
+    SEARCH_RESULT_LOGO.height = 100;
+
+    SEARCH_RESULT_NAME.innerText = FACTION.name;
+    SEARCH_RESULT_LEADER.innerText = `Leader: ${FACTION.leader}`
+    SEARCH_RESULT_DESCRIPTION.innerText = FACTION.description;
+
+
+    SEARCH_RESULT_BUTTON.classList.add("button");
+    SEARCH_RESULT_BUTTON.innerText = `Join ${FACTION.name}'s Discord`
+    SEARCH_RESULT_BUTTON.href = FACTION.discord;
+    SEARCH_RESULT_BUTTON.target = "_blank";
+
+
+    SEARCH_RESULT.appendChild(SEARCH_RESULT_LOGO);
+    SEARCH_RESULT.appendChild(SEARCH_RESULT_NAME);
+    SEARCH_RESULT.appendChild(SEARCH_RESULT_LEADER);
+    SEARCH_RESULT.appendChild(SEARCH_RESULT_DESCRIPTION);
+    SEARCH_RESULT.appendChild(SEARCH_RESULT_BUTTON);
+
+    SEARCH_RESULTS.appendChild(SEARCH_RESULT);
+}
+
+function addAllFactions() {
+    FACTION_LIST.forEach(faction => {
+        console.log(faction);
+        addFaction(faction);
+    });
+}
+
 fetch("data/factions.json").then(r => r.json()).then(data => {
     FACTION_LIST = data;
     console.log(FACTION_LIST);
+    
+    // wait 250ms
+    setTimeout(() => {
+        addAllFactions();
+    }, 1000);
+    
 });
 
-// Search for faction using fuse.js
+
+
 async function searchFaction(query) {
 
     const
@@ -48,13 +161,18 @@ async function searchFaction(query) {
     return fuse.search(query);
 }
 
-// after 1 s
-setTimeout(async () => {
-    console.log(await searchFaction("Combine"));
-}, 1000);
 
 // Search button
 SEARCH_BUTTON.addEventListener("click", async () => {
     const results = await searchFaction(SEARCH_BAR.value);
-    console.log(results);
+
+    SEARCH_RESULTS.innerHTML = "";
+    
+    results.forEach(result => {
+        addFaction(result);
+    });
+    
 });
+
+
+
