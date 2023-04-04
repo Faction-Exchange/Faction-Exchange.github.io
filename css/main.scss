@@ -10,6 +10,7 @@
 * {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -23,7 +24,7 @@ header {
   width: 100%;
   height: 100vh;
 
-  background: linear-gradient(0deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
   color: var(--color-quinary);
 
   display: flex;
@@ -31,6 +32,137 @@ header {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
 
 
+main {
+  max-width: 1000px;
+  margin: 0 auto 1em;
+  border: 1px solid var(--color-quinary);
+  padding: 1em;
+  color: white;
+
+  hr {
+	width: calc(100% - 3em);
+	border: 0.25px solid var(--color-quinary);
+  }
+
+}
+
+.button__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.button {
+  background-color: var(--color-quaternary);
+  color: var(--color-quinary);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+
+  &.special {
+	background-color: var(--color-tertiary);
+
+	&:hover {
+	  background-color: var(--color-secondary);
+	}
+  }
+
+  &:hover {
+	background-color: var(--color-tertiary);
+  }
+}
+
+.service__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .service {
+	flex: 1 1 300px;
+	height: 300px;
+	background-color: var(--color-quaternary);
+	color: var(--color-quinary);
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+	margin: 10px;
+	font-size: 1.2rem;
+	text-decoration: none;
+	transition: all 0.3s ease-in-out;
+	display: flex;
+	flex-direction: column;
+
+	h2 {
+	  flex: 1;
+	  border-bottom: 1px solid var(--color-quinary);
+	}
+
+	p {
+	  flex: 1;
+	}
+
+	&:hover {
+	  background-color: var(--color-tertiary);
+	}
+  }
+}
+
+input[type=search] {
+
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-quinary);
+  background-color: var(--color-quinary);
+  color: var(--color-quaternary);
+  border-radius: 5px;
+}
+
+.faction-list {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .faction {
+	flex: 1 1 300px;
+	height: 300px;
+	background-color: var(--color-quaternary);
+	color: var(--color-quinary);
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+	margin: 10px;
+	font-size: 1.2rem;
+	text-decoration: none;
+	transition: all 0.3s ease-in-out;
+	display: flex;
+	flex-direction: column;
+
+	h2 {
+	  flex: 1;
+	  border-bottom: 1px solid var(--color-quinary);
+	}
+
+	p {
+	  flex: 1;
+	}
+
+	&:hover {
+	  background-color: var(--color-tertiary);
+	}
+  }
 }

@@ -1,28 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Faction Exchange Web</title>
 
-    <link rel="stylesheet" href="css/main.css">
+    <link href="css/main.css" rel="stylesheet">
 
 </head>
 <body>
 
 
-    <header>
+<header>
+    <div class="container">
+        <h1>Faction Exchange</h1>
+        <p>
+            <strong>🎯 THE ULTIMATE DESTINATION</strong> for players looking to participate, grow and stay up to
+            date in the faction world.
+        </p>
 
-        <div class="container">
-            <h1>Faction Exchange</h1>
-            <p>
-                🎯 The ultimate destination for players looking to participate, grow and stay up to date in the faction
-                world.
-            </p>
-
+        <div class="button__row">
+            <a class="button special" href="https://discord.gg/PZJTV3fsRq">Join today</a>
+            <a class="button" href="#main">Learn more</a>
         </div>
 
-    </header>
+    </div>
+</header>
 
+
+<main id="main">
+
+    <div class="service__container">
+
+        <div class="service">
+            <h2>📰 QUALITY NEWS COVERAGE</h2>
+            <p>Stay informed with our news coverage on the latest faction updates. Never miss a thing with our high
+                quality journalism
+            </p>
+        </div>
+
+        <div class="service">
+            <h2>📈 GROW YOUR FACTION</h2>
+            <p>Grow your faction with our extensive list of resources. We have everything you need to grow your faction
+                to the next level.
+            </p>
+        </div>
+
+        <div class="service">
+            <h2>📊 FACTION STATS</h2>
+            <p>We publish the latest faction stats weekly. We have the most up to date stats on the faction world
+                than our competitors.
+            </p>
+        </div>
+
+        <div class="service">
+            <h2>🚀 PLATFORM FOR GROWTH</h2>
+            <p>Our server provides a platform for factions to advertise themselves and recruit new members, helping
+                them grow and expand.
+            </p>
+        </div>
+
+        <div class="service">
+            <h2>🎮 FUN COMMANDS</h2>
+            <p>Our server has a variety of fun commands to keep you entertained.</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <h1>FactionsDB</h1>
+    <p>A collection of most MWT factions and their analytics.</p>
+
+    <label for="search-bar"></label>
+    <input
+            type="search"
+            name="search"
+            placeholder="Search for a faction"
+            id="search-bar"
+    >
+    <input
+            type="button"
+            value="Search"
+            id="search-button"
+    >
+
+
+    <div class="faction-list" id="search-results"></div>
+</main>
+
+<script defer src="js/main.js"></script>
 
 </body>
 </html>
