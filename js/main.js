@@ -28,20 +28,33 @@ const
     SEARCH_RESULTS = document.getElementById("search-results");
 
 let
-    FACTION_DICT = {},
     FACTION_LIST = [];
 
 // Get data/factions.json | async
 fetch("data/factions.json").then(r => r.json()).then(data => {
-    FACTION_DICT = data;
-
-    for (let faction in FACTION_DICT) {
-        // add name to list
-        FACTION_LIST.push(faction);
-
-    }
-
-    console.log("Factions loaded");
+    FACTION_LIST = data;
     console.log(FACTION_LIST);
+});
 
+// Search for faction using fuse.js
+async function searchFaction(query) {
+
+    const
+        options = {
+            includeScore: true,
+            keys: ["name", "description", "leader"]
+        },
+        fuse = new Fuse(FACTION_LIST, options) // "list" is the item array
+    return fuse.search(query);
+}
+
+// after 1 s
+setTimeout(async () => {
+    console.log(await searchFaction("Combine"));
+}, 1000);
+
+// Search button
+SEARCH_BUTTON.addEventListener("click", async () => {
+    const results = await searchFaction(SEARCH_BAR.value);
+    console.log(results);
 });
