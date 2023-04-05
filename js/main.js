@@ -1,6 +1,6 @@
 const
     WEBHOOK_URL = "https://discord.com/api/webhooks/1092807273404977152/p2gp5k9_gQ-GF-0xqqTl8BlLjqgyN_HSFJaboOqefJ9iIS_q_NrlylIngX_9GYqOw588",
-    DEV_MODE = true,
+    DEV_MODE = false,
     PAGE = window.location.pathname;
 
 // 1. Global Functions
