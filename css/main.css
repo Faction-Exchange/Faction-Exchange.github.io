@@ -29,6 +29,9 @@ header {
   align-items: center;
   text-align: center;
 }
+header .button__row {
+  justify-content: center;
+}
 
 main {
   max-width: 1000px;
@@ -45,7 +48,6 @@ main hr {
 .button__row {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
   text-align: center;
   gap: 1em;
@@ -131,6 +133,9 @@ input[type=search] {
   padding: 1em;
   border-radius: 1em;
   margin: 1em 0;
+}
+.search-result img {
+  border-radius: 1em;
 }
 .search-result .button {
   background-color: var(--color-primary);
