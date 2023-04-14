@@ -84,10 +84,10 @@ function addFaction(faction) {
 
     SEARCH_RESULT_BUTTON_ROW.classList.add("button__row")
 
-    SEARCH_RESULT_PAGE.classList.add("button");
-    SEARCH_RESULT_PAGE.innerText = `View ${FACTION.name}'s Page`
-    SEARCH_RESULT_PAGE.href = `factions/${FACTION.name.toLowerCase().replace(" ", "-")}.html`;
-    SEARCH_RESULT_PAGE.target = "_blank";
+    // SEARCH_RESULT_PAGE.classList.add("button");
+    // SEARCH_RESULT_PAGE.innerText = `View ${FACTION.name}'s Page`
+    // SEARCH_RESULT_PAGE.href = `faction_view.html?name=${FACTION.name.toLowerCase().replace(" ", "-")}`;
+    // SEARCH_RESULT_PAGE.target = "_blank";
 
     SEARCH_RESULT_DISCORD.classList.add("button");
     SEARCH_RESULT_DISCORD.innerText = `Join ${FACTION.name}'s Discord`
@@ -96,7 +96,7 @@ function addFaction(faction) {
 
 
     SEARCH_RESULT_BUTTON_ROW.appendChild(SEARCH_RESULT_DISCORD);
-    SEARCH_RESULT_BUTTON_ROW.appendChild(SEARCH_RESULT_PAGE);
+    // SEARCH_RESULT_BUTTON_ROW.appendChild(SEARCH_RESULT_PAGE);
 
     SEARCH_RESULT.appendChild(SEARCH_RESULT_LOGO);
     SEARCH_RESULT.appendChild(SEARCH_RESULT_NAME);
