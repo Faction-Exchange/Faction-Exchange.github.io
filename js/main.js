@@ -56,6 +56,57 @@ function getAverageColour(image_src) {
 
 }
 
+function addFaction(faction) {
+    const
+        FACTION = faction.item,
+        SEARCH_RESULT = document.createElement("div"),
+        SEARCH_RESULT_NAME = document.createElement("h3"),
+        SEARCH_RESULT_DESCRIPTION = document.createElement("p"),
+        SEARCH_RESULT_LEADER = document.createElement("p"),
+        SEARCH_RESULT_BUTTON_ROW = document.createElement("div"),
+        SEARCH_RESULT_DISCORD = document.createElement("a"),
+        SEARCH_RESULT_PAGE = document.createElement("a"),
+        SEARCH_RESULT_LOGO = document.createElement("img");
+
+    const
+        LOGO_NAME = `${FACTION.logo}`,
+        LOGO_PATH = LOGO_NAME;
+
+    SEARCH_RESULT.classList.add("search-result");
+
+    SEARCH_RESULT_LOGO.src = LOGO_PATH;
+    SEARCH_RESULT_LOGO.width = 100;
+    SEARCH_RESULT_LOGO.height = 100;
+
+    SEARCH_RESULT_NAME.innerText = FACTION.name;
+    SEARCH_RESULT_LEADER.innerText = `Leader: ${FACTION.leader}`
+    SEARCH_RESULT_DESCRIPTION.innerText = FACTION.description;
+
+    SEARCH_RESULT_BUTTON_ROW.classList.add("button__row")
+
+    SEARCH_RESULT_PAGE.classList.add("button");
+    SEARCH_RESULT_PAGE.innerText = `View ${FACTION.name}'s Page`
+    SEARCH_RESULT_PAGE.href = `factions/${FACTION.name.toLowerCase().replace(" ", "-")}.html`;
+    SEARCH_RESULT_PAGE.target = "_blank";
+
+    SEARCH_RESULT_DISCORD.classList.add("button");
+    SEARCH_RESULT_DISCORD.innerText = `Join ${FACTION.name}'s Discord`
+    SEARCH_RESULT_DISCORD.href = FACTION.discord;
+    SEARCH_RESULT_DISCORD.target = "_blank";
+
+
+    SEARCH_RESULT_BUTTON_ROW.appendChild(SEARCH_RESULT_DISCORD);
+    SEARCH_RESULT_BUTTON_ROW.appendChild(SEARCH_RESULT_PAGE);
+
+    SEARCH_RESULT.appendChild(SEARCH_RESULT_LOGO);
+    SEARCH_RESULT.appendChild(SEARCH_RESULT_NAME);
+    SEARCH_RESULT.appendChild(SEARCH_RESULT_LEADER);
+    SEARCH_RESULT.appendChild(SEARCH_RESULT_DESCRIPTION);
+    SEARCH_RESULT.appendChild(SEARCH_RESULT_BUTTON_ROW);
+
+    SEARCH_RESULTS.appendChild(SEARCH_RESULT);
+}
+
 
 // 2. Webhook
 if (!DEV_MODE) {
@@ -84,56 +135,6 @@ const
 let
     FACTION_LIST = [];
 
-function addFaction(faction) {
-    const
-        FACTION = faction.item,
-        SEARCH_RESULT = document.createElement("div"),
-        SEARCH_RESULT_NAME = document.createElement("h3"),
-        SEARCH_RESULT_DESCRIPTION = document.createElement("p"),
-        SEARCH_RESULT_LEADER = document.createElement("p"),
-        SEARCH_RESULT_BUTTON_ROW = document.createElement("div"),
-        SEARCH_RESULT_DISCORD = document.createElement("a"),
-        SEARCH_RESULT_PAGE = document.createElement("a"),
-        SEARCH_RESULT_LOGO = document.createElement("img");
-
-    const
-        LOGO_NAME = `${FACTION.logo}`,
-        LOGO_PATH = LOGO_NAME;
-        
-    SEARCH_RESULT.classList.add("search-result");
-
-    SEARCH_RESULT_LOGO.src = LOGO_PATH;
-    SEARCH_RESULT_LOGO.width = 100;
-    SEARCH_RESULT_LOGO.height = 100;
-
-    SEARCH_RESULT_NAME.innerText = FACTION.name;
-    SEARCH_RESULT_LEADER.innerText = `Leader: ${FACTION.leader}`
-    SEARCH_RESULT_DESCRIPTION.innerText = FACTION.description;
-
-    SEARCH_RESULT_BUTTON_ROW.classList.add("button__row")
-    
-    SEARCH_RESULT_PAGE.classList.add("button");
-    SEARCH_RESULT_PAGE.innerText = `View ${FACTION.name}'s Page`
-    SEARCH_RESULT_PAGE.href = `factions/${FACTION.name.toLowerCase().replace(" ", "-")}.html`;
-    SEARCH_RESULT_PAGE.target = "_blank";
-
-    SEARCH_RESULT_DISCORD.classList.add("button");
-    SEARCH_RESULT_DISCORD.innerText = `Join ${FACTION.name}'s Discord`
-    SEARCH_RESULT_DISCORD.href = FACTION.discord;
-    SEARCH_RESULT_DISCORD.target = "_blank";
-
-
-    SEARCH_RESULT_BUTTON_ROW.appendChild(SEARCH_RESULT_DISCORD);
-    SEARCH_RESULT_BUTTON_ROW.appendChild(SEARCH_RESULT_PAGE);
-
-    SEARCH_RESULT.appendChild(SEARCH_RESULT_LOGO);
-    SEARCH_RESULT.appendChild(SEARCH_RESULT_NAME);
-    SEARCH_RESULT.appendChild(SEARCH_RESULT_LEADER);
-    SEARCH_RESULT.appendChild(SEARCH_RESULT_DESCRIPTION);
-    SEARCH_RESULT.appendChild(SEARCH_RESULT_BUTTON_ROW);
-    
-    SEARCH_RESULTS.appendChild(SEARCH_RESULT);
-}
 
 fetch("data/factions.json").then(r => r.json()).then(data => {
     FACTION_LIST = data;
@@ -160,6 +161,4 @@ SEARCH_BUTTON.addEventListener("click", async () => {
         addFaction(result);
     });
 });
-
-
 

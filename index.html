@@ -13,7 +13,7 @@
 
 <header>
     <div class="container">
-        <h1>Faction Exchange</h1>
+        <h1>Farm Hub</h1>
         <p>
             <strong>🎯 THE ULTIMATE DESTINATION</strong> for players looking to participate, grow and stay up to
             date in the faction world.
@@ -22,6 +22,7 @@
         <div class="button__row">
             <a class="button special" href="https://discord.gg/PZJTV3fsRq">Join today</a>
             <a class="button" href="#main">Learn more</a>
+            <a class="button" href="#factionsdb">FactionsDB</a>
         </div>
 
     </div>
@@ -29,6 +30,10 @@
 
 
 <main id="main">
+
+    <div class="banner">
+        <h2>Check out the Cow Protection Task Force</h2>
+    </div>
 
     <div class="service__container">
 
@@ -68,30 +73,33 @@
 
     <hr>
 
-    <h1>FactionsDB</h1>
-    <p>A collection of most MWT factions and their analytics.</p>
+    <div id="factionsdb">
+        <h1>FactionsDB</h1>
+        <p>A collection of most MWT factions and their analytics.</p>
 
-    <label for="search-bar"></label>
+        <label for="search-bar"></label>
 
-    <div class="search__row">
+        <div class="search__row">
 
 
-        <input
-                id="search-bar"
-                name="fe-search"
-                placeholder="Search for a faction"
-                type="search"
-        >
-        <input
-                id="search-button"
-                type="button"
-                value="Search"
-        >
+            <input
+                    id="search-bar"
+                    name="fe-search"
+                    placeholder="Search for a faction"
+                    type="search"
+            >
+            <input
+                    id="search-button"
+                    type="button"
+                    value="Search"
+            >
 
+        </div>
+
+
+        <div class="faction-list" id="search-results"></div>
     </div>
 
-
-    <div class="faction-list" id="search-results"></div>
 </main>
 
 <script defer src="js/main.js"></script>

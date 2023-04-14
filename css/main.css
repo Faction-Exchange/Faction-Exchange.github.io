@@ -45,6 +45,14 @@ main hr {
   border: 0.25px solid var(--color-quinary);
 }
 
+.banner {
+  background-color: var(--color-quaternary);
+  margin: 1em;
+  padding: 1em;
+  border-radius: 1em;
+  text-align: center;
+}
+
 .button__row {
   display: flex;
   flex-direction: row;
@@ -88,7 +96,7 @@ main hr {
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
-  margin: 10px;
+  margin: 1em;
   font-size: 1.2rem;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
